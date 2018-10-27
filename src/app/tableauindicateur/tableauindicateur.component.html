@@ -1,0 +1,74 @@
+
+
+{{ today | date:'shortTime' }}
+<table class="table table-bordered">
+  <thead style="text-align:center;" class="thead-dark">
+    <tr>
+      <th width="400px" >Nom de domaine</th>
+      <th scope="col" >Encours</th>
+      <th >Editeurs</th>
+      <th >Priorité</th>
+      <th scope="col">Non affecté</th>
+      <th>SLA</th>
+      <th>OLA</th>
+      <th>OLA+</th>
+      <th>2,5</th>
+      <th>2.5+</th>
+      <th scope="col" >Recus</th>
+      <th>Resolus</th>
+    </tr>
+  </thead>
+  <tbody>
+   <tr *ngFor="let resultat of resultats,index as i">
+   <td> 
+   
+        <div class="card-title"><b>{{resultat[1]}}</b></div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)=" SendbEncours(resultat[0].listIncidentEncours)">
+      Encours
+      </button>
+
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target=".bd2-example-modal-lg" (click)=" SendRecus(resultat[0].listIncidentRecus)">
+        date   
+      </button>
+
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bd2-example-modal-lg" (click)=" SendRecus(resultat[0].listIncidentRecus)">
+       Recus
+      </button> 
+    </div>
+      
+      <app-infodomain [domains_encours]="domainEncours"></app-infodomain>
+      <app-infodomain-recus [domain_recus]="domainRecus"></app-infodomain-recus>
+    </td>
+   <td align="center" valign="middle"><h1>{{resultat[2].encours}}</h1></td>
+   <td align="center" valign="middle"><h1>{{resultat[2].editeur}}</h1></td>
+   <td align="center" valign="middle"><h1>{{resultat[2].p1}}</h1></td>
+   <td align="center" valign="middle"><h1>{{resultat[2].nonAffec}}</h1></td>
+   <td align="center" valign="middle"><h1>{{resultat[2].slako}}</h1></td>
+   <td align="center" valign="middle"><h1>{{resultat[2].olako}}</h1></td>
+   <td align="center" valign="middle"><h1>{{resultat[2].olanko}}</h1></td>
+   <td align="center" valign="middle"><h1>{{resultat[2].deux_cinq}}</h1></td>
+   <td align="center" valign="middle"><h1>{{resultat[2].deux_cinq_plus}}</h1></td>
+   <td align="center" valign="middle"><h1>{{resultat[2].recu}}</h1></td>
+   <td></td>
+   </tr>
+   <tr class="table-success">
+     <td>
+     
+          <div class="card-title"><h1>Total</h1></div>
+        
+     </td>
+     <td><h1>{{Totale.Tencours}}</h1></td>
+     <td><h1>{{Totale.Tediteur}}</h1></td>
+     <td><h1>{{Totale.Tp}}</h1></td>
+     <td><h1>{{Totale.Taffec}}</h1></td>
+     <td><h1>{{Totale.sla}}</h1></td>
+     <td><h1>{{Totale.ola}}</h1></td>
+     <td><h1>{{Totale.olanko}}</h1></td>
+     <td><h1>{{Totale.oladeuxCinque}}</h1></td>
+     <td><h1>{{Totale.oladeuxCinqueplus}}</h1></td>
+     <td><h1>{{Totale.Trecus}}</h1></td>
+     <td></td>
+   </tr>
+  </tbody>
+</table>

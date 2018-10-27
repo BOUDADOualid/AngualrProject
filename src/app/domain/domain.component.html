@@ -1,0 +1,75 @@
+<br>
+<app-dashboard></app-dashboard>
+<br>
+ <div class="text-right">
+  <button class="btn-success btn" (click)="setEtat()">
+    <i [ngClass]="{
+      'fa fa-minus ':etat===true,
+      'fa fa-plus':etat===false} "></i>
+   
+  </button>
+</div>
+<div class="row" >
+  <div class="col-md-8 mx-auto"> 
+<div class="col-md-4 mx-auto mb-4" *ngIf="etat">
+  <h1>Nouvelle Domain</h1>
+  <div class="form-group">
+      <label for="name">Name</label>
+      <input [(ngModel)]="domain.nom" placeholder="nom de domain"  value="" type="text" class="form-control" >
+  </div>
+  <div class="form-group">
+      <label for="author">Nom Editeur</label>
+      <input [(ngModel)]="domain.nomEditeur" placeholder=" nom d'editeur"  type="text" class="form-control">
+  </div>
+  <button  *ngIf="operation" (click)="AjouterDomain()" class="btn btn-primary btn-block">Add</button>
+  <button  *ngIf="!operation" class="btn btn-danger btn-block">update</button>
+
+</div>
+</div>
+<div class="col-md-10 mx-auto">
+<table datatable [dtOptions]="dtption" [dtTrigger]="dtTrigger" class="table table-striped">
+    <thead class="bg-danger">
+      <tr>
+        <th>ID</th>
+        <th>NOM DOMAIN</th>
+        <th>NOM DOMAIN EDITEUR</th>
+        <th>ACTION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let domain of Domains,index as i'>
+        <td>{{ domain.id }}</td>
+        <td>{{ domain.nom }}</td>
+        <td>{{ domain.nomEditeur }}</td>
+        <td>
+        <a routerLink="/paramdomain/{{domain.id}}"><button  class="btn btn-sm btn-success mr-1">
+            <i class="fa fa-eyedropper"></i>
+        </button></a>
+
+      <button  (click)="editDomain(domain)" class="btn btn-sm btn-warning mr-1">
+        <i class="fa fa-pencil"></i>
+      </button>
+
+      <button (click)="supprimerDomain(domain.id)" class="btn btn-sm btn-danger">
+        <i class="fa fa-trash"></i>
+      </button>
+
+
+        </td>
+        </tr>
+    
+</tbody>
+</table>
+ 
+  
+  
+</div>
+</div>
+
+<app-message-info></app-message-info> 
+
+<!-- {{pageable | json}} -->
+<!-- {{Domains | json}}  -->
+
+
+

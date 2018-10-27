@@ -1,0 +1,60 @@
+<!-- {{ lastUpdate | async | date:'dd|MM|yyyy  h:mm:ss'}} -->
+<br>
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <table class="table striped">
+            <thead class="thead-dark">
+       <tr>
+       <th colspan="4">{{Domain.nom}}</th>
+       </tr>
+      </thead>
+      <tbody>
+      <tr>
+       <td></td> 
+       <td>
+       <div class="form-group">
+       <input type="color" name="color" class="form-control" value="#0A9F32" disabled>
+      </div>
+    </td>
+
+    <td>
+        <div class="form-group">
+        <input type="color" name="color" class="form-control" value="#FFC300" disabled>
+       </div>
+     </td>
+
+     <td>
+        <div class="form-group">
+        <input type="color" name="color" class="form-control" value="#F3403B" disabled>
+       </div>
+     </td>
+      </tr>
+       <!-- for 1 -->
+      <tr *ngFor="let domainInd of Domain.list_Indicateur; index as i">
+        <td>{{domainInd.indicateur}}</td>
+        <!-- for 2-->
+         <td *ngFor="let domainIndParm of domainInd.list_Indicateur_param" >
+            <div class="form-row">
+            <div class="form-group col-md-4">
+              Min
+           <input type="number" value="{{domainIndParm.min}}" class="form-control"> 
+            </div>
+            <div class="form-group col-md-4">
+              Max
+           <input type="number" value="{{domainIndParm.max}}" class="form-control">
+            </div>
+          </div>
+          </td>
+          <!-- Modification -->
+          <td><button class="btn btn-warning"><i class="fa fa-pencil"></i></button></td>
+       </tr>
+      </tbody>
+      <thead class="thead-dark">
+       <tr>
+       <th colspan="4"></th>
+       </tr>
+      </thead>
+    </table>
+    </div>
+</div>
+<!-- {{Domain | json}} -->
