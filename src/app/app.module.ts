@@ -18,6 +18,7 @@ import { FooterComponent } from './footer/footer.component';
 import { TableauindicateurComponent } from './tableauindicateur/tableauindicateur.component';
 import { InfodomainComponent } from './infodomain/infodomain.component';
 import { InfodomainRecusComponent } from './infodomain-recus/infodomain-recus.component';
+import { ClocktimeComponent } from './clocktime/clocktime.component';
 
 
 const appRoutes: Routes=[
@@ -43,6 +44,7 @@ MessageInfoComponent
     TableauindicateurComponent,
     InfodomainComponent,
     InfodomainRecusComponent,
+    ClocktimeComponent,
   ],
   imports: [
     BrowserModule,

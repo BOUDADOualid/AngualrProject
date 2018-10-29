@@ -2,9 +2,6 @@ import { Component, OnInit,Output,EventEmitter} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { IncidentEncoursService } from '../incident-encours.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
-import { Observable } from 'rxjs';
-import { interval } from 'rxjs';
-
 
 @Component({
   selector: 'app-tableauindicateur',
@@ -21,8 +18,8 @@ export class TableauindicateurComponent implements OnInit {
   @Output() 
   domainRecus:any;
   
-  today: number = Date.now();
   
+  t:any;
   Totale={
     Tencours:0,
     Tediteur:0,
@@ -38,6 +35,7 @@ export class TableauindicateurComponent implements OnInit {
   resultats=[];
   constructor(private incidentEncoursService:IncidentEncoursService,private spinnerService:Ng4LoadingSpinnerService) { }
   ngOnInit() {
+
     this.spinnerService.show();
     this.AfficherResulta();
     

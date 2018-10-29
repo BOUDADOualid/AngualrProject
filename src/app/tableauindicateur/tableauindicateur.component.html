@@ -1,6 +1,4 @@
 
-
-{{ today | date:'shortTime' }}
 <table class="table table-bordered">
   <thead style="text-align:center;" class="thead-dark">
     <tr>
@@ -21,7 +19,6 @@
   <tbody>
    <tr *ngFor="let resultat of resultats,index as i">
    <td> 
-   
         <div class="card-title"><b>{{resultat[1]}}</b></div>
         <div class="btn-group" role="group" aria-label="Basic example">
      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" (click)=" SendbEncours(resultat[0].listIncidentEncours)">
@@ -72,3 +69,4 @@
    </tr>
   </tbody>
 </table>
+<app-clocktime></app-clocktime>
