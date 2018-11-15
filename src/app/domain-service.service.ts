@@ -30,5 +30,6 @@ getDomain(id){
   return this.http.get(this.url+"/api/domains/"+id)
 }
 
+
 }
   

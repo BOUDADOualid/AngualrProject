@@ -13,13 +13,22 @@
               <div class="input-group-prepend">
                   <div class="input-group-text"><i class="fa fa-comment text-danger"></i></div>
               </div>
-              <textarea class="form-control" placeholder="Ecrire Votre message" required rows="5"></textarea>
+              <textarea class="form-control" placeholder="Ecrire Votre message" required rows="5" [(ngModel)]="msg.message"></textarea>
           </div>
       </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+  <swal
+  #AjouterSwal
+  title="Ajouter"
+  text="Ajouter par succé"
+  type="success"
+  [showCancelButton]="false"
+  [focusCancel]="false"
+  timer="1500">
+</swal>
+        <button type="button" class="btn btn-primary" (click)="Addmessage()" [disabled]="!msg.message" data-dismiss="modal">Save changes</button>
       </div>
     </div>
   </div>

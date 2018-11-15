@@ -1,4 +1,4 @@
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd4-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
           <div class="modal-header">
@@ -9,11 +9,11 @@
             </div>
             <table class="table table-bordered">
                 <thead>
-                <tr class="bg-primary">
+                <tr class="bg-success">
                   <th scope="col">Numero</th>
                   <th>Group charge de l'action</th>
                   <th scope="col">Priorite</th>
-                  <th scope="col">Intervenants</th>
+                  <th scope="col" width="20px">Intervenants</th>
                   <th scope="col">Date de creation</th>
                   <th scope="col">Date SAL</th>
                   <th>Dead Line group</th>
@@ -21,7 +21,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let encours of domains_encours">
+                <tr *ngFor="let encours of domain_recus_editeur">
                     <td>{{encours.numero}}</td>
                     <td>{{encours.groupeEncharge}}</td>
                     <td>{{encours.priorite}}</td>

@@ -14,11 +14,21 @@ export class TableauindicateurComponent implements OnInit {
 
   @Output()  
   domainEncours:any;
-  
+  //on peut utilisé domainEncours sans domainEditeur faisons filtar par editeur 
+  @Output()  
+  domainEditeur:any;
+
   @Output() 
   domainRecus:any;
+
+
+  @Output()
+  domainResolus:any;
   
-  
+  encoursfiltre=[{}]
+
+  editeurfiltre=[{}]
+
   t:any;
   Totale={
     Tencours:0,
@@ -35,23 +45,43 @@ export class TableauindicateurComponent implements OnInit {
   resultats=[];
   constructor(private incidentEncoursService:IncidentEncoursService,private spinnerService:Ng4LoadingSpinnerService) { }
   ngOnInit() {
-
     this.spinnerService.show();
     this.AfficherResulta();
-    
   }
  
   SendbEncours(encours){
-    this.domainEncours=encours;
+    this.encoursfiltre=[{}]
+    encours.forEach(element => {
+      if(!element.groupeEncharge.includes("EDITEUR ")){
+        this.encoursfiltre.unshift(element)
+      }
+
+    });
+    this.domainEncours=this.encoursfiltre
+  }
+
+  SendbEditeur(encours){
+    this.editeurfiltre=[{}]
+    encours.forEach(element => {
+      if(element.groupeEncharge.includes("EDITEUR ")){
+        this.editeurfiltre.unshift(element)
+      }
+
+    });
+    this.domainEditeur=this.editeurfiltre
   }
 
 
   SendRecus(recus){
     this.domainRecus=recus;
   }
+  
+  SendResolus(resolus){
+  this.domainResolus=resolus
+  }
+
 
 AfficherResulta(){
-
   return this.incidentEncoursService.getTableResultat().subscribe(res=>{
     console.log(res.json());
     this.resultats=res.json();
@@ -69,12 +99,22 @@ AfficherResulta(){
      this.Totale.oladeuxCinque+=element[2].deux_cinq;
      this.Totale.oladeuxCinqueplus+=element[2].deux_cinq_plus;
     });
-
-    
-
     });
 }
-  
-     
+getColor(valeur) {
+  if(valeur>=0 && valeur<=4) {
+    return '#0A9F32';
+  } else if(valeur>=5 && valeur<10) {
+    return '#FFC300';
+  }else{
+    return '#F3403B';
+  }
+}
+
+pourcentage(valeur){
+  return 'valeur%';
+}
+
+
 
 }

@@ -1,0 +1,55 @@
+<div class="modal fade bd3-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" >
+        <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Liste des messages</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                  <th>Numero </th>
+                  <th width="40%">Message</th>
+                  <th>operation</th>
+                  <th>activé</th>
+                  <th>état</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let msg of messages">
+                   <td  align="center" valign="middle">{{msg.id}}<br></td>
+                   <td  valign="middle">{{msg.message}}</td>
+                   <td  valign="middle">
+                   <button  class="btn btn-sm btn-danger">
+                          <i class="fa fa-trash"></i>
+                    </button> 
+                   </td>
+                   <td>
+                      <button  class="btn btn-sm ">
+                          <i class="fa fa-spinner fa-spin fa-fw"></i>
+                              <span class="sr-only">Loading...</span>
+                    </button>
+                   </td>
+                   <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox"  id="defaultCheck1" value="" checked="unchecked">
+                        {{msg.etat}}
+                         <label class="form-check-label" for="defaultCheck1">
+                         
+                        </label>
+                        </div>
+                   </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+           
+      </div>
+      
+    </div>
+  </div>
+  

@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  template: string =`<center><img src="./assets/images/verify.gif" /></center>`;
   title = 'FrontEnd';
+
+
+  
 }

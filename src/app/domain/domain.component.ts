@@ -4,6 +4,7 @@ import { NgFlashMessageService } from 'ng-flash-messages';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 // interface Domain {
 //   id: number;
@@ -17,12 +18,11 @@ import { Subject } from 'rxjs';
   styleUrls: ['./domain.component.css']
 })
 export class DomainComponent implements OnDestroy {
-  
+
+
+  logoutimage ="./assets/images/logout.png";
   dtTrigger: Subject<any> = new Subject();
   dtOptions:DataTables.Settings={};
-
-
-
   Domains=[];
  
   //déclration variable état
@@ -33,14 +33,15 @@ export class DomainComponent implements OnDestroy {
     nom: " ",
     nomEditeur: " "
   };
-  
+  id: string;
   constructor(private serviceDomain:DomainServiceService,
     private ngFlashMessageService: NgFlashMessageService,
-    private router:Router,
+    private router:Router,public authService: AuthService
     )
      { }
       
      ngOnInit():void{
+      this.id = localStorage.getItem('token');
       this.debug();
       this.dtOptions={
         pagingType:'full_numbers',
@@ -52,6 +53,14 @@ export class DomainComponent implements OnDestroy {
     
     //  this.affichierListDomainPage()
   }
+
+  logout(): void {
+    console.log("Logout");
+    this.authService.logout();
+    this.router.navigate(['/auth']);
+  }
+
+
   ngOnDestroy(): void {
     // Do not forget to unsubscribe the event
     this.dtTrigger.unsubscribe();
@@ -79,6 +88,7 @@ affichierListDomainPage(){
  affichierListDomain(){
   return this.serviceDomain.getListDomain().pipe(map(res=>res.json())).subscribe(data=>{
     this.Domains=data;
+    console.log(data);
     this.dtTrigger.next();
     // this.pageable=Data.pageable;
     // this.Nomberpage=new Array(Data.totalPages);
@@ -135,6 +145,7 @@ debug(){
 console.log("rerererererere");
 
 }
+
 }
 
 

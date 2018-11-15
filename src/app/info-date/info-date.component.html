@@ -1,0 +1,56 @@
+<div class="modal fade bd5-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <table class="table table-bordered">
+            <thead>
+              <tr class="bg-danger" align="center">
+                  <th colspan="6" ><h1>OLA</h1></th>
+              </tr>
+              <tr>
+                <th colspan="3"><div style="width:20px;height:20px;background-color:red;" ></div> Ola dépassé</th>
+                <th colspan="3"><div style="width:20px;height:20px;background-color:green;" ></div> Ola encour</th>
+              </tr>
+              <tr>
+               <th colspan="3">{{today2}} {{todayfrance}}</th>
+               <th colspan="3">{{today1}}</th>
+              </tr>
+              <tr class="bg-danger">
+                <th scope="col">Numero</th>
+                <th scope="col">Group charge de l'action</th>
+                <th>Dead Line group</th>
+                <th>Dead Line group terminé </th>
+                <th> Dead Line group terminé millisconde</th>
+                <th>état</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let encours of domains_encours" align="center">
+                  <td>{{encours.numero}}</td>
+                  <td>{{encours.groupeEncharge}}</td>
+                <td>{{encours.deadLineGrp}}</td>   
+                <td>{{DiffDate(encours.deadLineGrp)}}</td>
+                <td>
+                {{DiffDatemiliscond(encours.deadLineGrp)}}
+                </td>
+                <td>
+                <div style="width:20px;height:20px;background-color:red;" 
+                    *ngIf="DiffDatemiliscond(encours.deadLineGrp)<0"></div>
+                    <div style="width:20px;height:20px;background-color:green;" 
+                    *ngIf="DiffDatemiliscond(encours.deadLineGrp)>0"></div>
+                </td>  
+              </tr>
+            </tbody>
+          </table>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          </div>
+    </div>
+    
+  </div>
+</div>

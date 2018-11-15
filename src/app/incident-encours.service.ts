@@ -17,4 +17,9 @@ getTableResultat(){
 return this.http.get(this.url+"/api/resultatsbydomain")
 }
 
+getAllStatisticDomain(){
+  return this.http.get(this.url+"/api/static/resultats")
+}
+
+
 }

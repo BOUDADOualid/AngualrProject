@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
+import { MessageserviceService } from '../messageservice.service';
 
 @Component({
   selector: 'app-message-info',
@@ -6,11 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./message-info.component.css']
 })
 export class MessageInfoComponent implements OnInit {
-
-  constructor() { }
+  
+  @ViewChild('AjouterSwal') private AjouterSwal;
+  msg={
+  message:""
+  }
+constructor(private servicemessage:MessageserviceService) { }
   
   ngOnInit() {
-    
+    }
+Addmessage(){
+return this.servicemessage.ajouterMessage(this.msg).subscribe((res)=>{
+  console.log(res);
+  this.msg={
+    message:""
   }
-
+  this.AjouterSwal.show();
+  
+})
+};
 }

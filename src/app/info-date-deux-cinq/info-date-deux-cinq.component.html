@@ -1,0 +1,61 @@
+  <div class="modal fade bd6-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+        <table  class="table">
+            <thead >
+                <tr class="bg-secondary" align="center">
+                    <th colspan="8" ><h5>OLA X 2,5</h5></th>
+                </tr>
+              <tr>
+                <th colspan="4"><div style="width:20px;height:20px;background-color:red;" ></div> Ola dépassé</th>
+                <th colspan="4"><div style="width:20px;height:20px;background-color:green;" ></div> Ola encour</th>
+              </tr>
+              <tr>
+               <th colspan="4">{{today2}} {{todayfrance}}</th>
+               <th colspan="4">{{today1}}</th>
+              </tr>
+              <tr class="bg-secondary">
+                <th scope="col">N°</th>
+                <th scope="col">Group</th>
+                <th>Date de creation</th>
+                <th>OLA</th>
+                <th>OLA*2</th>
+                <th>FIN</th>
+                <th>ms</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let encours of domains_encours" align="center">
+                  <td>{{encours.numero}}</td>
+                  <td>{{encours.groupeEncharge}}</td>
+                  <td>{{encours.actionDateCreation}}</td>
+                <td>{{encours.deadLineGrp}}</td>  
+                <td>
+                    {{DateOla2_5(encours.deadLineGrp,encours.actionDateCreation)}}
+                </td> 
+                <td>{{DiffDate(encours.deadLineGrp,encours.actionDateCreation)}}</td>
+                <td>{{DiffDatemiliscond(encours.deadLineGrp,encours.actionDateCreation)}}</td>
+                <td>
+                <div style="width:10px;height:10px;background-color:red;" 
+                    *ngIf="DiffDatemiliscond(encours.deadLineGrp,encours.actionDateCreation)<0"></div>
+                    <div style="width:10px;height:10px;background-color:green;" 
+                    *ngIf="DiffDatemiliscond(encours.deadLineGrp,encours.actionDateCreation)>0"></div>
+                </td>  
+              </tr>
+            </tbody>
+          </table>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          </div>
+    </div>
+    
+  </div>
+</div>
