@@ -21,5 +21,11 @@ getAllStatisticDomain(){
   return this.http.get(this.url+"/api/static/resultats")
 }
 
+getAllIncidentResolus(){
+  return this.http.get(this.url+"/api/Resolus")
+}
 
+getAllIncidentEncours(){
+  return this.http.get(this.url+"/api/incidents")
+}
 }

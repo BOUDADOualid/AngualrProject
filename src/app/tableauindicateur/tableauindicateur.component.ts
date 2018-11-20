@@ -1,4 +1,4 @@
-import { Component, OnInit,Output,EventEmitter} from '@angular/core';
+import { Component, OnInit,Output,ViewChild} from '@angular/core';
 import { map } from 'rxjs/operators';
 import { IncidentEncoursService } from '../incident-encours.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
@@ -11,6 +11,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 export class TableauindicateurComponent implements OnInit {
 
   secondes: number;
+  @ViewChild('MessageError') private messageError;
 
   @Output()  
   domainEncours:any;
@@ -99,7 +100,7 @@ AfficherResulta(){
      this.Totale.oladeuxCinque+=element[2].deux_cinq;
      this.Totale.oladeuxCinqueplus+=element[2].deux_cinq_plus;
     });
-    });
+    },erro=>{this.messageError.show()});
 }
 getColor(valeur) {
   if(valeur>=0 && valeur<=4) {

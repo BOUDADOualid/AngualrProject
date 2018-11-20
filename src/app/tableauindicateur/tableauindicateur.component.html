@@ -110,7 +110,7 @@
     {{resultat[2].recu}}</div></h1></td>
    <td align="center" valign="middle">
   <button type="button" class="btn btn-secondary" data-toggle="modal" data-target=".bdResolus-example-modal-lg" (click)="SendResolus(resultat[0].listResolus)">
-    Resolus <span class="badge badge-light"><h4>{{resultat[2].resolu}}</h4></span>
+    <i class="fa fa-check">Click </i> <h4>{{resultat[2].resolu}}</h4>
   </button> 
   
 </td>
@@ -138,7 +138,12 @@
   </tbody>
 </table>
 <br>
-
+<swal #MessageError 
+  title="error connexion backend?" 
+  text="probléme http" 
+  type="error"
+  >
+</swal>  
 <app-clocktime></app-clocktime>
 <app-infodomain [domains_encours]="domainEncours"></app-infodomain>
 <app-infodomain-recus [domain_recus]="domainRecus"></app-infodomain-recus>

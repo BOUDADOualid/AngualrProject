@@ -17,4 +17,8 @@ return this.http.get(this.url+"/api/messages")
 }
 
 
+removeMessgae(id){
+ return this.http.delete(this.url+"/api/message/"+id)
+}
+
 }

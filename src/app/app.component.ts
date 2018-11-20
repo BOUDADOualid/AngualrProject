@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
 
   template: string =`<center><img src="./assets/images/verify.gif" /></center>`;
-  title = 'FrontEnd';
+  title = 'Atos';
 
 
   

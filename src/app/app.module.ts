@@ -7,6 +7,7 @@ import { NgFlashMessagesModule } from 'ng-flash-messages';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner'
 import { DataTablesModule } from 'angular-datatables';
 import { ChartsModule } from 'ng2-charts';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -28,6 +29,8 @@ import { InfoDateDeuxCinqComponent } from './info-date-deux-cinq/info-date-deux-
 import { AuthGuard } from './auth.guard';
 import { GraphiquesComponent } from './graphiques/graphiques.component';
 import { InfoResolusComponent } from './info-resolus/info-resolus.component';
+import { IncidentRsolusAdminComponent } from './incident-rsolus-admin/incident-rsolus-admin.component';
+import { IncidentEncourAdminComponent } from './incident-encour-admin/incident-encour-admin.component';
 
 const appRoutes: Routes=[
   {path: '', redirectTo: '/auth',pathMatch: 'full'},
@@ -59,6 +62,8 @@ MessageInfoComponent
     InfoDateDeuxCinqComponent,
     GraphiquesComponent,
     InfoResolusComponent,
+    IncidentRsolusAdminComponent,
+    IncidentEncourAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +73,7 @@ MessageInfoComponent
     DataTablesModule,
     ReactiveFormsModule,
     ChartsModule,
+    NgxJsonViewerModule,
     Ng4LoadingSpinnerModule.forRoot(),
     RouterModule.forRoot(appRoutes,{enableTracing:true}),
     NgFlashMessagesModule.forRoot(),

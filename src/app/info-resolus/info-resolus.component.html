@@ -2,7 +2,53 @@
 <div class="modal fade bdResolus-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        {{ domains_resolus|json}}
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Incident Resolus</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <table class="table table-bordered">
+                  <thead>
+                  <tr class="bg-primary">
+                    <th scope="col">Numero</th>
+                    <th>Group charge de l'action</th>
+                    <th scope="col">Priorite</th>
+                    <th scope="col">Intervenants</th>
+                    <th scope="col">Date de creation</th>
+                    <th scope="col">Date SAL</th>
+                    <th>Dead Line group</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let resolus of domains_resolus">
+                      <td>{{resolus.numero}}</td>
+                      <td>{{resolus.groupeEncharge}}</td>
+                      <td>{{resolus.priorite}}</td>
+                    <td>{{resolus.intervenant}}</td>
+                    <td>{{resolus.actionDateCreation}}</td>
+                    <td>{{resolus.date_SLA}}</td>
+                    <td>{{resolus.deadLineGrp}}</td>     
+                  </tr>
+                </tbody>
+              </table>
+              <p>
+                  
+                  <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Json view
+                  </button>
+                </p>
+                <div class="collapse" id="collapseExample">
+                  <div class="card card-body">
+                      <ngx-json-viewer [json]="domains_resolus"></ngx-json-viewer>
+                  </div>
+                </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+              </div>
+             
+       
       </div>
     </div>
   </div>

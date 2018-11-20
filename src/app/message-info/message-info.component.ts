@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { MessageserviceService } from '../messageservice.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-message-info',
   templateUrl: './message-info.component.html',
@@ -12,7 +12,7 @@ export class MessageInfoComponent implements OnInit {
   msg={
   message:""
   }
-constructor(private servicemessage:MessageserviceService) { }
+constructor(private servicemessage:MessageserviceService,private router:Router) { }
   
   ngOnInit() {
     }
@@ -23,7 +23,12 @@ return this.servicemessage.ajouterMessage(this.msg).subscribe((res)=>{
     message:""
   }
   this.AjouterSwal.show();
-  
+  this.router.navigateByUrl('/auth',{skipLocationChange:true}).then(()=>{
+    this.router.navigate(['/domains']);
+   
+      })
 })
+
+
 };
 }

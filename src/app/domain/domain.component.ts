@@ -1,11 +1,11 @@
-import { Component,OnDestroy, OnInit } from '@angular/core';
+import { Component,OnDestroy, OnInit,ViewChild } from '@angular/core';
 import { DomainServiceService } from '../domain-service.service';
 import { NgFlashMessageService } from 'ng-flash-messages';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { AuthService } from '../auth.service';
-
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 // interface Domain {
 //   id: number;
 //   nom : string;
@@ -18,7 +18,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./domain.component.css']
 })
 export class DomainComponent implements OnDestroy {
-
+@ViewChild('MessageError') private messageError;
 
   logoutimage ="./assets/images/logout.png";
   dtTrigger: Subject<any> = new Subject();
@@ -36,7 +36,8 @@ export class DomainComponent implements OnDestroy {
   id: string;
   constructor(private serviceDomain:DomainServiceService,
     private ngFlashMessageService: NgFlashMessageService,
-    private router:Router,public authService: AuthService
+    private router:Router,public authService: AuthService,
+    private spinnerService:Ng4LoadingSpinnerService
     )
      { }
       
@@ -86,15 +87,17 @@ affichierListDomainPage(){
  })
 }
  affichierListDomain(){
+  this.spinnerService.show();
   return this.serviceDomain.getListDomain().pipe(map(res=>res.json())).subscribe(data=>{
     this.Domains=data;
     console.log(data);
     this.dtTrigger.next();
+    this.spinnerService.hide();
     // this.pageable=Data.pageable;
     // this.Nomberpage=new Array(Data.totalPages);
     // console.log(this.pageable);
     // this.pageb = data.totalpages
-  })
+  },erro=>{this.messageError.show()},()=>console.log("tétamare"));
   
   }
   // .subscribe((domain)=>{

@@ -1,4 +1,5 @@
  import { Component, OnInit } from '@angular/core';
+ 
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,7 @@ export class DashboardComponent implements OnInit {
   monitoring="./assets/images/monitoring.png";
   registration ="./assets/images/registration.png";
   incident ="./assets/images/information.png";
+
   constructor() { }
 
   ngOnInit() {
