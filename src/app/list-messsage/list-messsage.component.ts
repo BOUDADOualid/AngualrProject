@@ -2,6 +2,7 @@ import { Component, OnInit,OnDestroy} from '@angular/core';
 import { MessageserviceService } from '../messageservice.service';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { elementStart, element } from '@angular/core/src/render3/instructions';
 
 @Component({
   selector: 'app-list-messsage',
@@ -13,15 +14,17 @@ export class ListMesssageComponent implements OnInit,OnDestroy {
   dtTrigger: Subject<any> = new Subject();
   dtOptions:DataTables.Settings={};
   constructor(private servicemessage:MessageserviceService,private router:Router) { }
- messages=[];
+ messages=[{id:null,messsage:'',etat:null}];
+ checked=[];
   ngOnInit() {
     this.getAll();
     this.dtOptions={
       pagingType:'full_numbers',
       paging:true,
-      pageLength:5,
+      pageLength:10,
     
     }
+   
   }
 
 getAll(){
@@ -31,12 +34,10 @@ return this.servicemessage.affichierAll().subscribe((res)=>{
 })
 }
 
-supprimeMessage(id){
+supprimeMessage(id,message){
   return this.servicemessage.removeMessgae(id).subscribe(res=>{
-    this.router.navigateByUrl('/auth',{skipLocationChange:true}).then(()=>{
-      this.router.navigate(['/domains']);
-     
-        })
+  var i=this.messages.indexOf(message)
+  this.messages.splice(i,1)
   })
 }
 ngOnDestroy(): void {
@@ -44,11 +45,35 @@ ngOnDestroy(): void {
   this.dtTrigger.unsubscribe();
 }
 checkedValue(value){
-  if(value!=true){
-    return " ";
-  }else{
-    return "checked";
-  }
+
+
+  this.checked.push(value);
+
+
+  console.log(this.checked);
 }
 
+deselecteAll(){
+  this.messages.forEach(element=>{
+    element.etat=false
+  })
+}
+selectAll(){
+    this.messages.forEach(element=>{
+      element.etat=true
+    })
+}
+deleteAll(){
+
+  this.messages.forEach(item=>{
+    if(item.etat==true){
+      this.servicemessage.removeMessgae(item.id).subscribe(res=>{
+      var i=this.messages.indexOf(item)
+      this.messages.splice(i,1)
+      })
+    }
+  })
+  
+  
+}
 }

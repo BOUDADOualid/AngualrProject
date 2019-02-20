@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-
+import { environment }from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +9,7 @@ export class IncidentEncoursService {
 
   constructor(private http:Http) {  
   }
-url="http://localhost:8080";
-
-
+  url=environment.apiUrl;
 
 getTableResultat(){
 return this.http.get(this.url+"/api/resultatsbydomain")

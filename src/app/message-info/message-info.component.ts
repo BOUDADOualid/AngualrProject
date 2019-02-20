@@ -23,7 +23,7 @@ return this.servicemessage.ajouterMessage(this.msg).subscribe((res)=>{
     message:""
   }
   this.AjouterSwal.show();
-  this.router.navigateByUrl('/auth',{skipLocationChange:true}).then(()=>{
+  this.router.navigateByUrl('/load',{skipLocationChange:true}).then(()=>{
     this.router.navigate(['/domains']);
    
       })

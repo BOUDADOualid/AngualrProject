@@ -24,7 +24,7 @@ export class IncidentRsolusAdminComponent implements OnInit,OnDestroy {
     this.dtOptions={
       pagingType:'full_numbers',
       paging:true,
-      pageLength:5,
+      pageLength:10,
     
     }
   }

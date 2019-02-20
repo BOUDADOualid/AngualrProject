@@ -1,11 +1,9 @@
 .footer {
-  position: fixed;
+  position:auto;
   left: 0;
   border:1px double  #dc3545;
-  border-radius: 10px;
-  bottom: 0;
+  bottom:0;
   width: 100%;
   background-color:#dc3545;
   color: white;
-  text-align: center;
 }

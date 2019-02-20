@@ -19,7 +19,7 @@ lastUpdate=new Promise((resolve,reject)=>{
 })
 
 
-Domain={};
+Domain={id:0,nom:'',nomEditeur:'',list_Indicateur:{}};
   ngOnInit() {
     this.router.params.subscribe((params) => {
         const id = +params['id'];

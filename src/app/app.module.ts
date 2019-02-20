@@ -8,7 +8,6 @@ import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner'
 import { DataTablesModule } from 'angular-datatables';
 import { ChartsModule } from 'ng2-charts';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
-
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -30,15 +29,21 @@ import { AuthGuard } from './auth.guard';
 import { GraphiquesComponent } from './graphiques/graphiques.component';
 import { InfoResolusComponent } from './info-resolus/info-resolus.component';
 import { IncidentRsolusAdminComponent } from './incident-rsolus-admin/incident-rsolus-admin.component';
-import { IncidentEncourAdminComponent } from './incident-encour-admin/incident-encour-admin.component';
+import{IncidentEncourAdminComponent} from'./incident-encour-admin/incident-encour-admin.component';
+import { NoteFoundComponent } from './note-found/note-found.component';
+import { GraphiqueBarComponent } from './graphique-bar/graphique-bar.component';
+import { LoadComponent } from './load/load.component';
+import { InfoResolushorsOlaComponent } from './info-resolushors-ola/info-resolushors-ola.component';
 
 const appRoutes: Routes=[
-  {path: '', redirectTo: '/auth',pathMatch: 'full'},
+  {path: '', redirectTo: '/TableauIndicateur',pathMatch: 'full'},
   {path:'domains',component:DomainComponent,canActivate: [AuthGuard]},
   {path:'auth',component:AuthComponent},
+  {path:'load',component:LoadComponent},
   {path:'TableauIndicateur',component:TableauindicateurComponent},
-  {path:'paramdomain/:id',component:EditDomainParamComponent,canActivate: [AuthGuard]}
-  
+  {path:'paramdomain/:id',component:EditDomainParamComponent,canActivate: [AuthGuard]},
+  { path: 'not-found', component: NoteFoundComponent },
+  { path: '**', redirectTo: 'not-found' }
 ]
 MessageInfoComponent
 
@@ -62,8 +67,12 @@ MessageInfoComponent
     InfoDateDeuxCinqComponent,
     GraphiquesComponent,
     InfoResolusComponent,
-    IncidentRsolusAdminComponent,
     IncidentEncourAdminComponent,
+    IncidentRsolusAdminComponent,
+    NoteFoundComponent,
+    GraphiqueBarComponent,
+    LoadComponent,
+    InfoResolushorsOlaComponent,
   ],
   imports: [
     BrowserModule,

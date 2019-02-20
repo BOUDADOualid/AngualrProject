@@ -1,11 +1,12 @@
+<div class="col-md-11 m-auto">
 <div class="row">
     <div class="col-lg col-sm-4">
         <div class="card h-100 mb-2">
             <div class="card-block text-center">
                 <h1 class="p-3 text-muted"><img src="{{incident}}"></h1>
             </div>
-            <div class="card-footer text-center"><button class="btn btn-danger btn-sm" width="150" data-toggle="modal" data-target=".bdE-example-modal-lg">
-                    INCIDENTS ENCOURS </button></div>
+            <div class="card-footer text-center">INCIDENTS ENCOURS<br><button class="btn btn-danger mt-1"  data-toggle="modal" data-target=".bdE-example-modal-lg">
+                     <i class="fa fa-exclamation-triangle"></i></button></div>
         </div>
     </div>
     <div class="col-lg col-sm-4">
@@ -13,8 +14,9 @@
             <div class="card-block text-center">
                 <h1 class="p-3 text-muted"><img src="{{registration}}"></h1>
             </div>
-            <div class="card-footer text-center"> <button class="btn btn-primary btn-sm" width="150" data-toggle="modal" data-target=".bdRA-example-modal-lg">
-                INCIDENTS RESOLUS </button></div>
+            <div class="card-footer text-center"> INCIDENTS RESOLUS<br>
+                <button class="btn btn-primary mt-1"  data-toggle="modal" data-target=".bdRA-example-modal-lg">
+                 <i class="fa fa-check-square-o"></i></button></div>
             
         </div>
     </div>
@@ -23,7 +25,14 @@
             <div class="card-block text-center">
                 <h1 class="p-3 text-muted"><img src="{{monitoring}}"></h1>
             </div>
-            <div class="card-footer text-center">39 Views</div>
+            <div class="card-footer text-center">Statistique<br>
+                <button type="button" class="btn btn-Light ml-1 mr-1 mt-1" data-toggle="modal" data-target=".bdg-example-modal-lg">
+                        <i class="fa fa-bar-chart"></i>
+                    </button>
+                    <button type="button" class="btn btn-warning ml-2 mr-2 mt-1" data-toggle="modal" data-target=".br-example-modal-lg">
+                            <i class="fa fa-pie-chart"></i>
+                    </button>
+            </div>
         </div>
     </div>
     <div class="col-lg col-sm-4" >
@@ -31,13 +40,17 @@
             <div class="card-block text-center">
                 <h1 class="p-3 text-muted"><img src="{{image}}"></h1>
             </div >
-            <div class="card-footer text-center"><a  data-toggle="modal" data-target="#exampleModalLong">
-              <button class="btn btn-secondary btn-sm" width="150">Ajouter message</button>
+            <div class="card-footer text-center">
+                Message
+                <br>
+                <a  data-toggle="modal" data-target="#exampleModalLong">
+              <button class="btn btn-secondary ml-1 mr-1 mt-1" width="150"><i class="fa fa-envelope-o"></i></button>
             </a>
-            <button class="btn btn-primary btn-sm" width="150" data-toggle="modal" data-target=".bd3-example-modal-lg">
-                Liste message </button>
+            <button class="btn btn-primary  ml-1 mr-1  mt-1" width="150" data-toggle="modal" data-target=".bd3-example-modal-lg">
+                    <i class="fa fa-th-list"></i> </button>
         </div>
        
+    </div>
     </div>
     </div>
 </div>

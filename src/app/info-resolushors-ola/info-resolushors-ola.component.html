@@ -1,5 +1,6 @@
 
-<div class="modal fade bdResolus-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+
+<div class="modal fade bdResolushors-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
 
@@ -7,18 +8,14 @@
           <div class="row">
               <div class="col-md-10 m-auto">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Incident Resolus</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle">Incident Resolus hors OLA</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <table class="table table-bordered">
-                  <thead>
-                      <tr>
-                          <th colspan="4"><div style="width:20px;height:20px;background-color:red;" ></div> Résolus hors Ola </th>
-                          <th colspan="4"><div style="width:20px;height:20px;background-color:green;" ></div> Résolus</th>
-                        </tr>
-                  <tr class="bg-primary">
+                <thead>
+                  <tr class="bg-danger">
                     <th scope="col">Numero</th>
                     <th>Group charge de l'action</th>
                     <th scope="col">Priorite</th>
@@ -26,25 +23,20 @@
                     <th scope="col">Date de creation</th>
                     <th scope="col">Date SAL</th>
                     <th>Dead Line group</th>
-                    <th>etat</th>
+                   
 
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let resolus of domains_resolus">
-                      <td >{{resolus.numero}}</td>
-                      <td>{{resolus.groupeEncharge}}</td>
-                      <td>{{resolus.priorite}}</td>
-                    <td>{{resolus.intervenant}}</td>
-                    <td>{{resolus.actionDateCreation}}</td>
-                    <td>{{resolus.date_SLA}}</td>
-                    <td>{{resolus.deadLineGrp}}</td>    
-                    <td>
-                        <div style="width:10px;height:10px;background-color:red;" 
-                        *ngIf="resolus.isOla==true"></div>
-                        <div style="width:10px;height:10px;background-color:green;" 
-                        *ngIf="resolus.isOla==false"></div>
-                      </td> 
+                  <tr *ngFor="let resolus of domains_resolus_horsola">
+                      <td *ngIf="resolus.isOla==true">{{resolus.numero}}</td>
+                      <td *ngIf="resolus.isOla==true">{{resolus.groupeEncharge}}</td>
+                      <td *ngIf="resolus.isOla==true">{{resolus.priorite}}</td>
+                    <td *ngIf="resolus.isOla==true">{{resolus.intervenant}}</td>
+                    <td *ngIf="resolus.isOla==true">{{resolus.actionDateCreation}}</td>
+                    <td *ngIf="resolus.isOla==true">{{resolus.date_SLA}}</td>
+                    <td *ngIf="resolus.isOla==true">{{resolus.deadLineGrp}}</td>    
+                    
                   </tr>
                 </tbody>
               </table>

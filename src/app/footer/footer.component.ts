@@ -19,8 +19,6 @@ export class FooterComponent implements OnInit {
     secondsCounter.subscribe(n=>{
        if(this.i<this.messages.length){
       this.message=this.messages[this.i].message;
-      console.log(this.message)
-      console.log(this.i)
       this.i++;
     }else{
       this.i=0;

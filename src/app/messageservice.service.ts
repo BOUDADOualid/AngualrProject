@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { environment }from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class MessageserviceService {
 
   constructor(private http:Http) { }
-  url="http://localhost:8080"
+  url=environment.apiUrl;
 
 ajouterMessage(message){
 return this.http.post(this.url+"/api/message",message)

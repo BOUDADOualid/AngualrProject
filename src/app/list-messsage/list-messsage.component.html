@@ -9,50 +9,65 @@
             </div>
             <table>
                 <thead>
-                    <tr class="bg-dark">
-                      <th colspan="7">...</th>
+                    <tr>
+                      <th colspan="7" class="text-center">
+                          <swal #confirmDeleteAllMessage
+                          title="étes-vous sur de supprimer ce Message?" text="Supprimer Message" type="warning"
+                          [options]="{ showCancelButton: true,  confirmButtonText: 'Supprimer!',  confirmButtonColor: '#DD6B55' }"
+                          (confirm)="deleteAll()"
+                          timer=2000
+                          (cancel)="true"></swal>
+                          <button type="button" class="btn btn-success mt-4 ml-2 mr-2" (click)="selectAll()" >
+                              <i class="fa fa-check"></i>
+                          </button>
+                          <button type="button" class="btn btn-warning mt-4 ml-2 mr-2"(click)="deselecteAll()">
+                              <i class="fa fa-times-circle"></i>
+                          </button>
+                          
+                          <button type="button" class="btn btn-danger mt-4 ml-2 mr-2"(click)="confirmDeleteAllMessage.show()">
+                              <i class="fa fa-trash-o"></i>
+                          </button>
+
+                      </th>
                 </thead>
               </table>
               <br>
-            <table datatable [dtOptions]="dtption" [dtTrigger]="dtTrigger" class="table table-striped">
+
+             
+            <table width="90%"  class="table table-striped ">
                 <thead class="thead-dark">
                 <tr>
                   <th>Numero </th>
                   <th width="40%">Message</th>
                   <th>operation</th>
-                  <th>activé</th>
-                  <th>supprimer</th>
+                  <th>supprimer
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let msg of messages">
+                <tr *ngFor="let msg of messages,index as i">
                    <td  align="center" valign="middle">{{msg.id}}<br></td>
                    <td  valign="middle">{{msg.message}}</td>
                    <td  valign="middle">
                       <swal #confirmDeleteMessage
                       title="étes-vous sur de supprimer ce Message?" text="Supprimer Message" type="warning"
                       [options]="{ showCancelButton: true,  confirmButtonText: 'Supprimer!',  confirmButtonColor: '#DD6B55' }"
-                      (confirm)="supprimeMessage(msg.id)"
+                      (confirm)="supprimeMessage(msg.id,msg)"
                       timer=2000
                       (cancel)="true"></swal>
-                   <button  class="btn btn-sm btn-danger" (click)="confirmDeleteMessage.show()" data-dismiss="modal">
+                   <button  class="btn btn-sm btn-danger" (click)="confirmDeleteMessage.show()" >
                           <i class="fa fa-trash"></i>
                     </button> 
                    </td>
                    <td>
-                      <button  class="btn btn-sm ">
-                          <i class="fa fa-spinner fa-spin fa-fw"></i>
-                              <span class="sr-only">Loading...</span>
-                    </button>
-                   </td>
-                   <td>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox"  id="defaultCheck1" value="">
+                        <input class="form-check-input" type="checkbox"  id="msg.id" value="msg.id" [(ngModel)]="msg.etat" >{{msg.etat}}
                         </div>
                    </td>
                 </tr>
               </tbody>
             </table>
+                     
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
             </div>

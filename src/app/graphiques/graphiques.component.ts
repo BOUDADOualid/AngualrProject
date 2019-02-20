@@ -37,7 +37,6 @@ public bidDistributionStatColors:{}[]= [ { backgroundColor: ['#DAF7A6', '#FFC300
     let i=0;
     return this.serviceStatstic.getAllStatisticDomain().subscribe(data=>{
       this.static=data.json();
-      console.log(this.static)
       this.static.forEach(element => {
       // this.doughnutChartLabels.unshift(element.nomDomain);
       // this.doughnutChartData.unshift(element.countEncours);
@@ -47,8 +46,8 @@ public bidDistributionStatColors:{}[]= [ { backgroundColor: ['#DAF7A6', '#FFC300
        i++;
        });
 
-       console.log(this.doughnutChartLabels);
-       console.log(this.doughnutChartData);
+      //  console.log(this.doughnutChartLabels);
+      //  console.log(this.doughnutChartData);
   });
 
 }

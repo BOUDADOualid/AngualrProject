@@ -24,15 +24,18 @@ export class DomainComponent implements OnDestroy {
   dtTrigger: Subject<any> = new Subject();
   dtOptions:DataTables.Settings={};
   Domains=[];
- 
+
   //déclration variable état
   etat=false;
   operation = true;
-  //déclration variable 
+  //déclration variable
   domain={
+    id:null,
     nom: " ",
     nomEditeur: " "
   };
+ 
+
   id: string;
   constructor(private serviceDomain:DomainServiceService,
     private ngFlashMessageService: NgFlashMessageService,
@@ -40,18 +43,17 @@ export class DomainComponent implements OnDestroy {
     private spinnerService:Ng4LoadingSpinnerService
     )
      { }
-      
+
      ngOnInit():void{
       this.id = localStorage.getItem('token');
-      this.debug();
       this.dtOptions={
         pagingType:'full_numbers',
         paging:true,
-        pageLength:5,
-      
+        pageLength:10,
+
       }
       this.affichierListDomain()
-    
+
     //  this.affichierListDomainPage()
   }
 
@@ -68,7 +70,8 @@ export class DomainComponent implements OnDestroy {
   }
   setEtat() {
     this.domain = {
-    nom: " ",
+    id:null,
+    nom: "",
     nomEditeur:""
     }
     this.operation = true;
@@ -82,51 +85,58 @@ export class DomainComponent implements OnDestroy {
   }
 affichierListDomainPage(){
   this.serviceDomain.getListPage().subscribe((res)=>{
-  
-    
+
+
  })
 }
  affichierListDomain(){
   this.spinnerService.show();
   return this.serviceDomain.getListDomain().pipe(map(res=>res.json())).subscribe(data=>{
     this.Domains=data;
-    console.log(data);
     this.dtTrigger.next();
     this.spinnerService.hide();
-    // this.pageable=Data.pageable;
-    // this.Nomberpage=new Array(Data.totalPages);
-    // console.log(this.pageable);
-    // this.pageb = data.totalpages
-  },erro=>{this.messageError.show()},()=>console.log("tétamare"));
-  
-  }
-  // .subscribe((domain)=>{
-  //   console.log(domain.json());
-  //   this.Domains=domain.json();
-  // })
-  // @ViewChild('valide') private deleteSwal: SwalComponent;
+  },erro=>{this.messageError.show()});
 
+  }
   //supprimer Domain
- supprimerDomain(id){
-  console.log('biennnnnnnnnnnnnnn');
+ supprimerDomain(id,domain){
   return this.serviceDomain.RomveDomain(id).subscribe((res)=>{
-   console.log(res);
-    this.message("Domain Supprimé par")
-  
- })
+  //  console.log(res);
+    let i=this.Domains.indexOf(domain)
+    this.Domains.splice(i,1)
+    this.message("suppression effectué avec succès")
+    this.router.navigateByUrl('/load',{skipLocationChange:true}).then(()=>{
+      this.router.navigate(['/domains']);
+    })
     
+ })
+
 };
+ modifierDomaian(){
+  //  console.log(this.domain.id);
+  //  console.log(this.domain);
+  return this.serviceDomain.updateDomain(this.domain.id,this.domain).subscribe((res)=>{
+    // console.log(res);
+    this.setEtat();
+    this.message("Modfication effectué avec succès")
+    
+  })
+ }
 
 
  //ajouter Domain
  AjouterDomain(){
  return this.serviceDomain.saveDomain(this.domain).subscribe((res)=>{
-  console.log(res);
+  // console.log(res);
   this.domain={
+    id:null,
     nom: " ",
     nomEditeur: " "
   };
-     this.message("Nouvelle Domain Ajouté")
+    this.message("Nouvelle Domain Ajouté")
+    this.router.navigateByUrl('/load',{skipLocationChange:true}).then(()=>{
+    this.router.navigate(['/domains']);
+    })
 })
 
 };
@@ -134,21 +144,12 @@ affichierListDomainPage(){
 //message operation validé
 message(message){
 this.ngFlashMessageService.showFlashMessage({
-  messages: [message], 
-  dismissible: false, 
+  messages: [message],
+  dismissible: false,
   timeout: 2000,
   type: 'success'
 });
- this.router.navigateByUrl('/auth',{skipLocationChange:true}).then(()=>{
- this.router.navigate(['/domains']);
-
-   })
 }
-debug(){
-console.log("rerererererere");
-
-}
-
 }
 
 
